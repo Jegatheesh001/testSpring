@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="mysessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="dao" class="springDemo.actionDispatcherFilter.MyTransactionManager">
+		<property name="sessionFactory" ref="mysessionFactory"></property>
+	</bean>
+
+	<bean id="helloWorld" class="springDemo.admin.vo.UserBean">
+		<property name="userName" value="Jegatheesh M" />
+	</bean>
+	
+	<context:annotation-config/>
+	<context:component-scan base-package="springDemo.admin.*" />
+	<context:component-scan base-package="springDemo.chat.*" />
+	
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
+
+<!-- 	<bean id="controller" class="springDemo.admin.controller.SpringController" />
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut id="serviceOperation"
+			expression="execution(* springDemo.admin.service.AdminService.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
+	</aop:config> -->
+
+</beans>

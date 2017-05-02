@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="chatProtected" extends="sessionCheck">
+	</package>
+
+	<package name="chatVisit" extends="struts-default,json-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<action name="chatBase" method="chatBase"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result name="success" type="tiles">/chatWelcomepage</result>
+		</action>
+
+		<action name="chatLogin" method="login"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result name="success">/resources/jsp/chat/Login.jsp</result>
+		</action>
+
+		<action name="chatRegister" method="register"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result name="success">/resources/jsp/chat/Register.jsp</result>
+		</action>
+
+		<action name="checkUserAvailability" method="checkUserAvailability"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+
+		<action name="registerUser" method="registerUser"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">chatBase</param>
+			</result>
+		</action>
+
+		<action name="loginCheck" method="loginCheck"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+
+		<action name="loginUser" method="loginUser"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">chatBase</param>
+			</result>
+		</action>
+
+		<action name="chatLogout" method="chatLogout"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">chatBase</param>
+			</result>
+		</action>
+
+		<action name="openInbox" method="openInbox"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result name="success">/resources/jsp/chat/Inbox.jsp</result>
+		</action>
+
+		<action name="openChat" method="openChat"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result name="success">/resources/jsp/chat/ForumChat.jsp</result>
+		</action>
+
+		<action name="saveForumChat" method="saveForumChat"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+
+		<action name="getAllForumChat" method="getAllForumChat"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+
+		<action name="getAllInboxUsers" method="getAllInboxUsers"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+
+		<action name="newInboxChat" method="newInboxChat"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+
+		<action name="getInboxChat" method="getInboxChat"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+
+		<action name="saveInboxMessage" method="saveInboxMessage"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+
+		<action name="getUserName" method="getUserName"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+		
+		<action name="getUserNameList" method="getUserNameList"
+			class="springDemo.chat.action.GlobalChatAction">
+			<result type="json" />
+		</action>
+
+	</package>
+</struts>

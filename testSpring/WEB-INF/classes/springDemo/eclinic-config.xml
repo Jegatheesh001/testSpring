@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="eclinic" extends="sessionCheck">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<action name="eclinicBase" class="springDemo.eclinic.action.EclinicAction">
+			<interceptor-ref name="allowPost" />
+			<result name="success" type="tiles">/welcomepage</result>
+		</action>
+
+		<action name="scanEmiratesId" method="scanEmiratesId"
+			class="springDemo.eclinic.action.EclinicAction">
+			<result name="success">/resources/jsp/ViewApplet.jsp</result>
+		</action>
+
+		<action name="portExcel" method="portExcel"
+			class="springDemo.eclinic.action.EclinicAction">
+			<result name="success">/resources/jsp/UploadPortingData.jsp</result>
+		</action>
+		
+		<action name="portData" method="portData"
+			class="springDemo.eclinic.action.EclinicAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">portExcel</param>
+			</result>
+		</action>
+
+		<action name="uploadExcel" method="uploadExcel"
+			class="springDemo.eclinic.action.EclinicAction">
+			<result name="success">/resources/jsp/UploadPortingData.jsp</result>
+		</action>
+
+		<action name="clientFolderScan" method="clientFolderScan"
+			class="springDemo.eclinic.action.EclinicAction">
+			<result name="success">/resources/jsp/ScanFilesApplet.jsp</result>
+		</action>
+		
+		<action name="portMasterToBranch" method="portMasterToBranch"
+			class="springDemo.eclinic.action.EclinicPortingAction">
+			<result name="success">/resources/jsp/porting/PortDataFromMasterToBranch.jsp</result>
+		</action>
+		
+		<action name="portLotCode" method="portLotCode"
+			class="springDemo.eclinic.action.EclinicPortingAction">
+			<result name="success">/resources/jsp/porting/PortDataFromMasterToBranch.jsp</result>
+		</action>
+		
+		<action name="findCount" method="findCount"
+			class="springDemo.eclinic.action.EclinicPortingAction">
+		</action>
+				
+		<action name="executeQuery" method="executeQuery"
+			class="springDemo.eclinic.action.EclinicPortingAction">
+		</action>
+
+	</package>
+
+
+</struts>

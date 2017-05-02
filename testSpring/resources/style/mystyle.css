@@ -1,0 +1,156 @@
+html {
+	height: 100%;
+	min-height: 100%;
+	border: 0px none;
+}
+
+.inputtypes {
+	font: normal 12px/normal Geneva, Arial, Helvetica, sans-serif;
+	color: #333333;
+	border: 1px solid #999999;
+}
+
+table.listing {
+	width: 100%;
+	vertical-align: middle;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border: 1px solid #7492b3;
+	text-transform: capitalize;
+	margin: 8px 0px 20px 0px;
+}
+
+table.listing tr {
+	height: 25px;
+}
+
+table.listing tr td {
+	padding: 2px 0px 2px 5px;
+	height: 25;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	border: 1px solid #a5bedb;
+	text-transform: capitalize;
+	background-color: #FFFFFF
+}
+
+table.listing th {
+	padding: 2px 0px 2px 5px;
+	height: 25;
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	letter-spacing: 5%;
+	background: #d8dee8;
+	text-transform: capitalize;
+	vertical-align: middle;
+}
+
+table.message-header-container {
+	float: left;
+	background-color: #b4dc9b;
+}
+
+table.message-header-container td {
+	padding: 5px;
+}
+
+table.message-header-container td:HOVER {
+	background-color: white;
+	cursor: pointer;
+}
+
+table.message-header-container td.selected {
+	text-align: left;
+	background-color: white;
+	padding: 5px;
+}
+
+.forumHeader {
+	background-color: #b4dc9b;
+	padding: 5px;
+}
+
+.chat-list-container div.me {
+	text-align: right;
+	background-color: #adafb2;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 2px 0 2px 0;
+}
+
+.chat-list-container div.other {
+	text-align: left;
+	background-color: #9fd2de;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 2px 0 2px 0;
+}
+
+.chat-list-container div.date {
+	color: brown;
+	font-weight: lighter;
+	margin: 2px 0 2px 0;
+}
+
+table tr td.inboxContent {
+	vertical-align: top;
+}
+
+table tr td.inboxContent div.me {
+	text-align: right;
+	background-color: #adafb2;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 2px 0 2px 0;
+}
+
+table tr td.inboxContent div.other {
+	text-align: left;
+	background-color: #9fd2de;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 2px 0 2px 0;
+}
+
+table tr td.inboxContent div.date {
+	color: brown;
+	font-weight: lighter;
+	margin: 2px 0 2px 0;
+}
+
+table tr td.inboxUsers div.odd {
+	text-align: left;
+	background-color: #adafb2;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 2px 0 2px 0;
+}
+
+table tr td.inboxUsers div.even {
+	text-align: left;
+	background-color: #9fd2de;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 2px 0 2px 0;
+}
+
+table tr td.inboxUsers {
+	vertical-align: top;
+}
+
+table tr td.inboxUsers div:HOVER {
+	background-color: grey;
+	cursor: pointer;
+}
+
+table tr td.inboxContent div.inboxHeader {
+	background-color: grey;
+	padding: 5px;
+}
+
+table tr td.inboxContent div.inboxFooter {
+	background-color: grey;
+	padding: 5px;
+}

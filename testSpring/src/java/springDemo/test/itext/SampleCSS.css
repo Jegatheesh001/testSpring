@@ -1,0 +1,13 @@
+table {
+	width: 200pt;
+}
+
+.ra {
+	text-align: right;
+	vertical-align: middle;
+}
+
+.la {
+	text-align: left;
+	vertical-align: middle;
+}

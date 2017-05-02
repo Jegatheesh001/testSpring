@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src= "../js/jquery-3.1.1.min.js"></script>
+<script>
+    function startApplet()
+    {    	
+    	    var app=document.getElementById('scannerApplet');
+   			 var status=app.getUserDetails(); 
+    		$('#info').append(status);
+    }
+</script>
+</head>
+<body>
+    <object id="scannerApplet" type="application/x-java-applet" height="1" width="1" name="scannerApplet">
+  <param name="code" value="com.medasuae.applets.EmiratesIdScanner.class" />
+  <param name="archive" value="applets.jar" />
+  failed to run code.  No Java plug-in was found.
+</object>
+<input type="button" value="read" onclick="startApplet()"> 
+<div id="info">
+details is 
+</div>
+</body>
+
+</html>

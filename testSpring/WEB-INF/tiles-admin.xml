@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<!-- Base Layout Style -->
+
+	<definition name="baseLayout" template="/resources/jsp/testLayout.jsp">
+		<put-attribute name="title" value="TEST-SITE" />
+		<put-attribute name="header" value="/resources/jsp/testHeader.jsp" />
+	</definition>
+
+	<definition name="errorLayout" template="/resources/jsp/errorLayout.jsp">
+		<put-attribute name="title" value="TEST-SITE" />
+		<put-attribute name="header" value="/resources/jsp/errorHeader.jsp" />
+		<put-attribute name="footer" value="/resources/jsp/testFooter.jsp" />
+	</definition>
+
+	<!-- Home Page tiles -->
+
+	<definition name="/welcomepage" extends="baseLayout">
+		<put-attribute name="body" value="/resources/jsp/home.jsp" />
+		<put-attribute name="footer"
+			value="/resources/jsp/testFooter.jsp?pageno=01" />
+	</definition>
+
+	<definition name="sessionout" extends="errorLayout">
+		<put-attribute name="body" value="/resources/jsp/error.jsp" />
+	</definition>
+
+	<definition name="/viewMail" extends="baseLayout">
+		<put-attribute name="body" value="/resources/jsp/Mail.jsp" />
+		<put-attribute name="footer"
+			value="/resources/jsp/testFooter.jsp?pageno=01" />
+	</definition>
+	
+	<definition name="/openMail" extends="baseLayout">
+		<put-attribute name="body" value="/resources/jsp/ConfigMail.jsp" />
+		<put-attribute name="footer"
+			value="/resources/jsp/testFooter.jsp?pageno=01" />
+	</definition>
+	
+	<definition name="/regexPage" extends="baseLayout">
+		<put-attribute name="body" value="/resources/jsp/RegexPage.jsp" />
+		<put-attribute name="footer"
+			value="/resources/jsp/testFooter.jsp?pageno=01" />
+	</definition>
+	
+	<definition name="/viewServlet" extends="baseLayout">
+		<put-attribute name="body" value="/resources/jsp/LoadApplet.jsp" />
+		<put-attribute name="footer"
+			value="/resources/jsp/testFooter.jsp?pageno=01" />
+	</definition>
+		
+	<definition name="/testAngularJS" extends="baseLayout">
+		<put-attribute name="body" value="/resources/jsp/TestAngularJS.jsp" />
+		<put-attribute name="footer"
+			value="/resources/jsp/testFooter.jsp?pageno=01" />
+	</definition>
+
+</tiles-definitions>

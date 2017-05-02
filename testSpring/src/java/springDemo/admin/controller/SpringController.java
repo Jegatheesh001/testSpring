@@ -1,0 +1,53 @@
+package springDemo.admin.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
+
+import springDemo.admin.persistence.AdminDao;
+import springDemo.admin.service.AdminService;
+import springDemo.admin.vo.UserBean;
+import springDemo.admin.vo.Users;
+
+@Service
+@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+public class SpringController implements AdminService {
+
+	@Autowired
+	AdminDao adminDao;
+
+	public UserBean authenticateUser(String username, String password) {
+		return null;
+	}
+
+	public Users getUser(Integer userId) {
+		return adminDao.getUser(userId);
+	}
+
+	public void insertUser(Users user) {
+		adminDao.insertUser(user);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Users> getAllUsers() {
+		return adminDao.getAllUsers();
+	}
+
+	@Transactional(rollbackFor = { Exception.class })
+	public void checkTransaction(Users user) throws Exception {
+		adminDao.insertUser(user);
+		System.out.println("Transaction active :: " + TransactionSynchronizationManager.isActualTransactionActive());
+		throw (new Exception());
+	}
+
+	// ----------------- Getters & Setters ---------------------//
+
+	public void setAdminDao(AdminDao adminDao) {
+		this.adminDao = adminDao;
+	}
+
+}

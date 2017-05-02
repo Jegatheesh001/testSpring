@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="springDemo.chat.vo.Messages" table="test.gc_messages"
+		lazy="false">
+
+		<id name="messageId" column="message_Id" type="integer"
+			unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+
+		<property name="message" column="message" type="string"
+			length="1000" lazy="false" not-null="true" />
+
+		<property name="messageDate" column="message_Date" type="timestamp"
+			lazy="false" not-null="true" />
+
+		<property name="deleteStatus" column="delete_Status" type="string"
+			length="2" lazy="false" not-null="true" />
+
+		<property name="viewStatus" column="view_Status" type="string"
+			length="2" lazy="false" not-null="true" />
+
+		<many-to-one name="fromUser" cascade="lock" column="from_User"
+			class="springDemo.chat.vo.UserSetup" not-null="true" lazy="false" />
+
+		<many-to-one name="toUser" cascade="lock" column="to_User"
+			class="springDemo.chat.vo.UserSetup" not-null="true" lazy="false" />
+
+	</class>
+</hibernate-mapping>

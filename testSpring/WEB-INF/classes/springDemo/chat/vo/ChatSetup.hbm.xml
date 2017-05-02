@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="springDemo.chat.vo.ChatSetup" table="test.chat_setup"
+		lazy="false">
+
+		<id name="chatId" column="chat_Id" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<property name="chatName" column="chat_Name" type="string"
+			length="100" lazy="false" not-null="true" />
+
+		<property name="type" column="type" type="string" length="2"
+			lazy="false" not-null="true" />
+
+		<property name="chatType" column="chat_Type" type="string"
+			length="2" lazy="false" not-null="true" />
+
+		<property name="createdOn" column="created_On" type="timestamp"
+			length="2" lazy="false" not-null="true" />
+
+		<many-to-one name="createdBy" cascade="lock" column="created_By"
+			class="springDemo.chat.vo.UserSetup" not-null="true" lazy="false" />
+
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+       
+<tiles-definitions>
+<!-- Base Layout Style -->
+
+	<definition name="baseLayout" template="/resources/jsp/testLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/resources/jsp/testHeader.jsp" />
+	</definition>	
+	
+</tiles-definitions>

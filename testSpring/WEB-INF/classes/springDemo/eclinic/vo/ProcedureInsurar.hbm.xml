@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="springDemo.eclinic.vo.ProcedureInsurar" table="procedure_insurar"
+		lazy="false">
+		<id name="procedureInsurarId" column="id" type="int" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<!-- <many-to-one name="above_Hierarchy" cascade="lock" column="above_Hierarchy" 
+			class="drug.admin.vo.Hierarchy_setup" not-null="true" lazy="false" access="field"> 
+			</many-to-one> -->
+
+		<property name="insurarId" type="int" lazy="false" column="insurar_id" />
+		<property name="procedureId" type="int" lazy="false" column="procedure_id" />
+		<property name="deductableStat" type="string" lazy="false"
+			column="deductable_stat" />
+		<property name="deductableAmt" type="string" lazy="false"
+			column="deductable_amt" />
+		<property name="copayStat" type="string" lazy="false"
+			column="copay_stat" />
+		<property name="copayAmt" type="string" lazy="false" column="copay_amt" />
+		<property name="preappStat" type="string" lazy="false"
+			column="preapp_stat" />
+		<property name="corpDisc" type="string" lazy="false" column="corp_disc" />
+		<property name="prediscAmt" type="string" lazy="false"
+			column="predisc_amt" />
+		<property name="updated" type="string" lazy="false" column="updated" />
+		<property name="insurarProcName" type="string" lazy="false"
+			column="insurar_proc_name" />
+		<property name="insurarIcdCode" type="string" lazy="false"
+			column="insurar_icd_code" />
+		<property name="insurarInternalCode" type="string" lazy="false"
+			column="insurar_internal_code" />
+		<property name="factor" type="string" lazy="false" column="factor" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class  name="springDemo.eclinic.vo.ProcedureInsurerNetwork" table="procedure_insurar_net"
+		lazy="false">
+		<id name="procedureInsurerNetworkid" column="id" type="int" unsaved-value="0">
+			<generator class="identity"></generator>
+		</id>
+		<property name="insurarId" type="int" lazy="false" column="insurar_id" />
+		<property name="procedureId" type="int" lazy="false" column="procedure_id" />
+		<property name="insurarAmount" type="string" lazy="false"
+			column="insurar_amount" />
+		<property name="deductableStat" type="string" lazy="false"
+			column="deductable_stat" />
+		<property name="deductableAmt" type="string" lazy="false"
+			column="deductable_amt" />
+		<property name="copayStat" type="string" lazy="false"
+			column="copay_stat" />
+		<property name="copayAmt" type="string" lazy="false" column="copay_amt" />
+		<property name="preappStat" type="string" lazy="false"
+			column="preapp_stat" />
+		<property name="corpDisc" type="string" lazy="false" column="corp_disc" />
+		<property name="prediscAmt" type="string" lazy="false"
+			column="predisc_amt" />
+		<property name="networkType" type="string" lazy="false"
+			column="network_type" />
+		<property name="insurarProcName" type="string" lazy="false"
+			column="insurar_proc_name" />
+		<property name="officeId" type="string" lazy="false" column="office_id" />
+		<property name="factor" type="string" lazy="false" column="factor" />
+	</class>
+</hibernate-mapping>
