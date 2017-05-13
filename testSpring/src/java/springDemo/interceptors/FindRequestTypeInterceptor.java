@@ -1,17 +1,11 @@
 package springDemo.interceptors;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.interceptor.ServletRequestAware;
-
-import springDemo.admin.vo.UserBean;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
-import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.interceptor.ValidationAware;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
@@ -21,7 +15,6 @@ public class FindRequestTypeInterceptor extends AbstractInterceptor {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final String USER_KEY = "userbean";
 	static final String GET = "GET";
 	static final String POST = "POST";
 	private String customType;

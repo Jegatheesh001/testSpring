@@ -22,6 +22,7 @@
 	<a href="restBase.action">rest</a>&nbsp;||&nbsp;
 	<a href="viewGoogleMaps.action">GoogleMaps</a>&nbsp;||&nbsp;
 	<a href="viewGoogleChart.action">Google Charts</a>&nbsp;||&nbsp;
+	<a href="dencode.action">Encode/Decode</a>&nbsp;||&nbsp;
 
 	<div id="applets" style="display: none; margin: 15px;">
 		<a href="scanEmiratesId.action">Emirates Id Scanner</a><br />

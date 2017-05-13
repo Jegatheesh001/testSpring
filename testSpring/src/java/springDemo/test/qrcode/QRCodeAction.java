@@ -31,7 +31,7 @@ public class QRCodeAction extends ActionSupport implements ServletRequestAware, 
 	HttpServletResponse response;
 
 	public static void main(String[] args) {
-		String qrCodeText = "http://www.faceBook.com";
+		String qrCodeText = "Hi, How are you?";
 		String fileType = "png";
 		String filePath = "E:\\QR." + fileType;
 		int size = 125;

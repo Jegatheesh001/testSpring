@@ -9,12 +9,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import springDemo.actionDispatcherFilter.HibernateUtil;
 import springDemo.admin.vo.UserBean;
 import springDemo.admin.vo.Users;
 
 @Repository
+@Transactional
 public class AdminHibernateDao implements AdminDao {
 
 	@Autowired
@@ -53,7 +56,7 @@ public class AdminHibernateDao implements AdminDao {
 		return null;
 	}
 
-	public void insertUser(Users user) {
+	public void insertUser(Users user) throws Exception {
 		// Session session = HibernateUtil.getSession();
 		Session session = sessionFactory.openSession();
 		session.save(user);

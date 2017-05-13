@@ -1,14 +1,13 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<STYLE type="text/css">
-</STYLE>
 <script type="text/javascript"
-	src="/aims/resources/js/ckeditor/ckeditor.js"></script>
+	src="resources/js/ckeditor/ckeditor.js"></script>
 <script type="text/javascript"
-	src="/aims/resources/js/ckeditor/ckeditorModified.js"></script>
+	src="resources/js/ckeditor/ckeditorModified.js"></script>
 <script type="text/javascript">
 	$(function() {
 		CKEDITOR.replace('editor', {});
@@ -16,7 +15,7 @@
 </script>
 </head>
 <body>
-	<s:form>
+	<s:form action="sendMail">
 		<s:hidden name="mails.cc" />
 		<s:hidden name="mails.bcc" />
 		<table class="listing">
@@ -38,7 +37,7 @@
 			</tr>
 			<tr>
 				<td colspan="2"><div align="center">
-						<s:submit action="sendMail" value="Send Mail" />
+						<s:submit value="Send Mail" />
 					</div></td>
 			</tr>
 		</table>

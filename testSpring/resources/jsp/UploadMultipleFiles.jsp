@@ -4,13 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="resources/style/mystyle.css" rel="stylesheet"
+	type="text/css" />
 <title>Upload</title>
-<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="resources/js/jquery-3.1.1.min.js"></script>
 <script>
 	function createNew() {
 		var table = document.getElementById("myTable");
 		var count = table.rows.length;
-		var row = table.insertRow(count);
+		var row = table.insertRow(count-1);
 		var cell1 = row.insertCell(0);
 		var cell2 = row.insertCell(1);
 		cell1.innerHTML = "File:";
@@ -31,11 +33,11 @@
 				<tr>
 					<td><s:file label="File" name="image" /></td>
 				</tr>
+				<tr>
+					<td style="text-align: center;"><s:submit
+							cssClass="btn btn-primary" value="Upload" /></td>
+				</tr>
 			</table>
-			<tr>
-				<td style="text-align: center;"><s:submit
-						cssClass="btn btn-primary" value="Upload" /></td>
-			</tr>
 		</s:form>
 	</div>
 

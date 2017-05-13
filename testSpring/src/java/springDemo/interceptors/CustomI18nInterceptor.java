@@ -8,7 +8,6 @@ import org.apache.struts2.interceptor.I18nInterceptor;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
-import com.opensymphony.xwork2.util.ValueStack;
 
 public class CustomI18nInterceptor extends I18nInterceptor {
 
@@ -35,6 +34,7 @@ public class CustomI18nInterceptor extends I18nInterceptor {
 			invocation.getInvocationContext().getSession().put(localeKey, locale);
 		} else {
 			invocation.getInvocationContext().setLocale(new Locale(defaultLang));
+			invocation.getInvocationContext().getSession().put(localeKey, defaultLang);
 		}
 		return invocation.invoke();
 	}

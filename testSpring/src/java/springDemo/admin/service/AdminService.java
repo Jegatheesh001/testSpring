@@ -8,14 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 import springDemo.admin.vo.UserBean;
 import springDemo.admin.vo.Users;
 
-@Transactional
 public interface AdminService {
 
 	UserBean authenticateUser(String username, String password);
 
-	void insertUser(Users user);
+	void insertUser(Users user) throws Exception;
 
-	Users getUser(Integer userId);
+	Users getUser(Integer userId) throws Exception;
 
 	List<Users> getAllUsers();
 

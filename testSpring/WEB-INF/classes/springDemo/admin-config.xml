@@ -5,17 +5,12 @@
 
 <struts>
 
-	<package name="login" extends="struts-default">
+	<package name="login" extends="struts-default,interceptPack">
 
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
-		
-		<interceptors>
-			<interceptor name="i18nCustom"
-				class="springDemo.interceptors.CustomI18nInterceptor" />
-		</interceptors>
 
 		<action name="showLoginPage" method="showLoginPage"
 			class="springDemo.admin.action.LoginAction">
@@ -92,6 +87,11 @@
 			class="springDemo.admin.action.MainAction">
 			<result name="success">/resources/jsp/GoogleChartBase.jsp</result>
 		</action>
+		
+		<action name="dencode" method="dencode"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/EncodeDecode.jsp</result>
+		</action>
 
 	</package>
 
@@ -134,7 +134,11 @@
 				
 		<action name="decryptString" method="decryptString"
 			class="springDemo.admin.action.MainAction">
-			<interceptor-ref name="decryptParams" />
+			<interceptor-ref name="session" />
+			<interceptor-ref name="decrypt">
+				<param name="excludeParams">inputInteger</param>
+			</interceptor-ref>
+			<interceptor-ref name="params" />
 			<result name="success">/resources/jsp/CustomTagLib.jsp</result>
 		</action>
 

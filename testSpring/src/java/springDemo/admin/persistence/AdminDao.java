@@ -9,7 +9,7 @@ public interface AdminDao {
 
 	UserBean authenticateUser(String username, String password);
 
-	void insertUser(Users user);
+	void insertUser(Users user) throws Exception;
 
 	Users getUser(int userId);
 

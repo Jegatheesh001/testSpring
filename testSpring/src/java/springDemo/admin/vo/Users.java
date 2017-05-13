@@ -1,7 +1,15 @@
 package springDemo.admin.vo;
 
-public class Users {
+import javax.persistence.Entity;
 
+@Entity
+public class Users implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer userId;
 	private String userName;
 	private String userCode;

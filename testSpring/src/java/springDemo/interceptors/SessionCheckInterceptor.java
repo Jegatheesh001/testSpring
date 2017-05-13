@@ -17,13 +17,9 @@ public class SessionCheckInterceptor extends AbstractInterceptor {
 	private static final String USER_KEY = "userbean";
 
 	public String intercept(ActionInvocation invocation) throws Exception {
-		ActionProxy proxy = invocation.getProxy();
-		Map results = proxy.getConfig().getResults();
 		Map session = invocation.getInvocationContext().getSession();
-		UserBean userBean = null;
-		userBean = (UserBean) session.get("userbean");
-		// if(session.get(USER_KEY) == null)
-		if (session.get("userbean") == null) {
+		UserBean userBean = (UserBean) session.get(USER_KEY);
+		if (userBean == null) {
 			addActionError(invocation, "Your session has expired.");
 			return "invalidsession";
 		}

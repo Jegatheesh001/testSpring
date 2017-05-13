@@ -23,22 +23,19 @@
 		<property name="sessionFactory" ref="mysessionFactory"></property>
 	</bean>
 
-	<bean id="helloWorld" class="springDemo.admin.vo.UserBean">
-		<property name="userName" value="Jegatheesh M" />
-	</bean>
-	
-	<context:annotation-config/>
+	<context:annotation-config />
 	<context:component-scan base-package="springDemo.admin.*" />
 	<context:component-scan base-package="springDemo.chat.*" />
-	
-	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
 
-<!-- 	<bean id="controller" class="springDemo.admin.controller.SpringController" />
+	<tx:annotation-driven proxy-target-class="true"
+		transaction-manager="transactionManager" />
+
+	<!-- <bean id="controller" class="springDemo.admin.controller.SpringController" /> -->
 
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true" />
-			<tx:method name="*" />
+			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception" />
 		</tx:attributes>
 	</tx:advice>
 
@@ -46,6 +43,10 @@
 		<aop:pointcut id="serviceOperation"
 			expression="execution(* springDemo.admin.service.AdminService.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
-	</aop:config> -->
+	</aop:config>
+
+	<bean id="helloWorld" class="springDemo.admin.vo.UserBean">
+		<property name="userName" value="Jegatheesh M" />
+	</bean>
 
 </beans>

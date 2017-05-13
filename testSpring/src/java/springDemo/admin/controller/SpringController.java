@@ -14,7 +14,7 @@ import springDemo.admin.vo.UserBean;
 import springDemo.admin.vo.Users;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+@Transactional
 public class SpringController implements AdminService {
 
 	@Autowired
@@ -24,24 +24,25 @@ public class SpringController implements AdminService {
 		return null;
 	}
 
-	public Users getUser(Integer userId) {
-		return adminDao.getUser(userId);
+	public Users getUser(Integer userId) throws Exception {
+		Users user = null;
+		System.out.println("Transaction active :: " + TransactionSynchronizationManager.isActualTransactionActive());
+		user = adminDao.getUser(userId);
+		return user;
 	}
 
-	public void insertUser(Users user) {
+	public void insertUser(Users user) throws Exception {
 		adminDao.insertUser(user);
 	}
 
-	@Transactional(readOnly = true)
 	public List<Users> getAllUsers() {
 		return adminDao.getAllUsers();
 	}
 
-	@Transactional(rollbackFor = { Exception.class })
 	public void checkTransaction(Users user) throws Exception {
 		adminDao.insertUser(user);
 		System.out.println("Transaction active :: " + TransactionSynchronizationManager.isActualTransactionActive());
-		throw (new Exception());
+		throw (new Exception("Testing Transaction"));
 	}
 
 	// ----------------- Getters & Setters ---------------------//

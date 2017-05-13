@@ -171,6 +171,10 @@ public class MainAction extends ActionSupport implements ServletRequestAware, Se
 	public String viewChart(){
 		return SUCCESS;
 	}
+	
+	public String dencode(){
+		return SUCCESS;
+	}
 
 	public static void main(String[] args) {
 		String cmd = "C:/Program Files (x86)/Notepad++/notepad++.exe";

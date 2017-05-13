@@ -5,11 +5,7 @@
 
 <struts>
 
-	<package name="sessionCheck" extends="struts-default">
-		<result-types>
-			<result-type name="tiles"
-				class="org.apache.struts2.views.tiles.TilesResult" />
-		</result-types>
+	<package name="interceptPack" extends="struts-default">
 		<interceptors>
 			<interceptor name="session"
 				class="springDemo.interceptors.SessionCheckInterceptor" />
@@ -21,6 +17,7 @@
 				class="springDemo.interceptors.CustomI18nInterceptor" />
 			<interceptor-stack name="newStack">
 				<interceptor-ref name="session" />
+				<interceptor-ref name="params" />
 				<interceptor-ref name="defaultStack">
 					<param name="exception.logEnabled">true</param>
 					<param name="exception.logLevel">ERROR</param>
@@ -31,6 +28,7 @@
 				<interceptor-ref name="request">
 					<param name="customType">POST</param>
 				</interceptor-ref>
+				<interceptor-ref name="params" />
 				<interceptor-ref name="defaultStack">
 					<param name="exception.logEnabled">true</param>
 					<param name="exception.logLevel">ERROR</param>
@@ -38,14 +36,21 @@
 			</interceptor-stack>
 			<interceptor-stack name="decryptParams">
 				<interceptor-ref name="session" />
-				<interceptor-ref name="params" />
 				<interceptor-ref name="decrypt" />
+				<interceptor-ref name="params" />
 				<interceptor-ref name="defaultStack">
 					<param name="exception.logEnabled">true</param>
 					<param name="exception.logLevel">ERROR</param>
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
+	</package>
+
+	<package name="sessionCheck" extends="interceptPack">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
 		<default-interceptor-ref name="newStack"></default-interceptor-ref>
 		<global-results>
 			<result name="invalidsession" type="tiles">sessionout</result>
