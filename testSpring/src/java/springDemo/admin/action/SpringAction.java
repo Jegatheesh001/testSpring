@@ -21,6 +21,7 @@ import springDemo.admin.vo.Users;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+@Controller
 public class SpringAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 
 	private static final long serialVersionUID = 1L;

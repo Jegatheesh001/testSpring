@@ -4,23 +4,6 @@
 <head>
 <script type="text/javascript" src="resources/js/jquery-3.1.1.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
-<style type="text/css">
-#customCaptcha {
-	-webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none; /* Safari */
-	-khtml-user-select: none; /* Konqueror HTML */
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* Internet Explorer/Edge */
-	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-}
-
-#captcha {
-	-webkit-transform: rotate(-10deg);
-	-moz-transform: rotate(-10deg);
-	float: left;
-	color: red;
-}
-</style>
 <script type="text/javascript">
 	$(function() {
 		// $("#userName").focus();

@@ -17,11 +17,15 @@ public class ParamDecryptInterceptor extends AbstractInterceptor {
 
 	private String excludeParams;
 
+	private final String HINT = ":";
+	private final String SEPERATOR = ",";
+
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		Map<String, Parameter> params = ActionContext.getContext().getParameters();
 		if (excludeParams == null)
 			excludeParams = "";
+		String excludeParams = analyseParams();
 		for (Entry<String, Parameter> entry : params.entrySet()) {
 			String header = entry.getKey();
 			Parameter obj = entry.getValue();
@@ -30,7 +34,7 @@ public class ParamDecryptInterceptor extends AbstractInterceptor {
 
 			String decrypted = "";
 			decrypted = value.replaceAll(" ", "+");
-			if (!excludeParams.contains(header)) {
+			if (!excludeParams.contains(HINT + header + HINT)) {
 				try {
 					decrypted = AESAlgorithm.decrypt(decrypted);
 				} catch (Exception e) {
@@ -46,6 +50,15 @@ public class ParamDecryptInterceptor extends AbstractInterceptor {
 			}
 		}
 		return invocation.invoke();
+	}
+
+	private String analyseParams() {
+		String[] array = excludeParams.split(SEPERATOR);
+		String excludeParams = "";
+		for (String str : array) {
+			excludeParams += HINT + str + HINT + SEPERATOR;
+		}
+		return excludeParams;
 	}
 
 	public String getExcludeParams() {

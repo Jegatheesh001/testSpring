@@ -1,7 +1,12 @@
 package springDemo.admin.action;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -112,9 +117,12 @@ public class MainAction extends ActionSupport implements ServletRequestAware, Se
 	}
 
 	public String readFiles() {
-		File folder = new File("D:/ScannedDocuments");
+		File folder = new File("E:/apache-tomcat-7.0.73/webapps/testSpring/src/java");
 		String path = request.getParameter("path");
 		listFilesForFolder(folder);
+		List<String> filePaths = listFilesForFolderWithExtension(folder, "global_ar", "properties");
+		System.out.println(files);
+		readFile(filePaths.get(0));
 		return SUCCESS;
 	}
 
@@ -126,6 +134,58 @@ public class MainAction extends ActionSupport implements ServletRequestAware, Se
 				System.out.println(fileEntry.getName());
 			}
 		}
+	}
+
+	List<String> files;
+	List<String> filePaths;
+
+	public List<String> listFilesForFolderWithExtension(File folder, String startsWith, String extension) {
+		if (files == null) {
+			files = new ArrayList<String>();
+			filePaths = new ArrayList<String>();
+		}
+		for (File fileEntry : folder.listFiles()) {
+			if (fileEntry.isDirectory()) {
+				listFilesForFolderWithExtension(fileEntry, startsWith, extension);
+			} else {
+				if (startsWith == null && extension == null) {
+					files.add(fileEntry.getName());
+					filePaths.add(fileEntry.getAbsolutePath());
+				} else if (startsWith != null && extension != null) {
+					if (fileEntry.getName().startsWith(startsWith) && fileEntry.getName().endsWith("." + extension)) {
+						files.add(fileEntry.getName());
+						filePaths.add(fileEntry.getAbsolutePath());
+					}
+				} else if (startsWith == null) {
+					if (fileEntry.getName().endsWith("." + extension)) {
+						files.add(fileEntry.getName());
+						filePaths.add(fileEntry.getAbsolutePath());
+					}
+				} else {
+					if (fileEntry.getName().startsWith(startsWith)) {
+						files.add(fileEntry.getName());
+						filePaths.add(fileEntry.getAbsolutePath());
+					}
+				}
+			}
+		}
+		return filePaths;
+	}
+
+	public void readFile(String filePath) {
+		StringBuilder fileContents = new StringBuilder("");
+		String line = null;
+		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+			while ((line = br.readLine()) != null) {
+				fileContents.append(line + "\n");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			fileContents = new StringBuilder("Error at : " + line);
+			e.printStackTrace();
+		}
+		System.out.println(fileContents);
 	}
 
 	public String viewServlet() {

@@ -3,7 +3,6 @@ package springDemo.test.messenger.action;
 import java.io.IOException;
 import java.util.List;
 
-import javax.net.ssl.SSLContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.client.Client;
@@ -17,7 +16,6 @@ import javax.ws.rs.core.Response;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
-import org.glassfish.jersey.SslConfigurator;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -131,14 +129,7 @@ public class MessengerAction extends ActionSupport implements ServletRequestAwar
 	}
 
 	public static void main(String[] args) {
-		SslConfigurator sslConfig = SslConfigurator.newInstance()
-		        .keyPassword("secret-password-for-keystore");
-		SSLContext sslContext = sslConfig.createSSLContext();
-		
-		Client client = ClientBuilder.newBuilder().sslContext(sslContext).build();
-		WebTarget messageTarget = client.target("https://localhost:8080/testSpring/webapi").path("messages");
-		
-		Response response = messageTarget.request(MediaType.APPLICATION_JSON).get();
+		Response response = new MessengerAction().messageTarget.request(MediaType.APPLICATION_JSON).get();
 
 		List<Message> messageList = null;
 		ErrorMessage em = new ErrorMessage();

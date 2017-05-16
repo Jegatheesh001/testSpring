@@ -31,7 +31,7 @@ public class SpringController implements AdminService {
 		return user;
 	}
 
-	public void insertUser(Users user) throws Exception {
+	public void insertUser(Users user) {
 		adminDao.insertUser(user);
 	}
 

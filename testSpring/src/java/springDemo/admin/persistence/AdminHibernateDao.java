@@ -17,7 +17,6 @@ import springDemo.admin.vo.UserBean;
 import springDemo.admin.vo.Users;
 
 @Repository
-@Transactional
 public class AdminHibernateDao implements AdminDao {
 
 	@Autowired
@@ -56,7 +55,7 @@ public class AdminHibernateDao implements AdminDao {
 		return null;
 	}
 
-	public void insertUser(Users user) throws Exception {
+	public void insertUser(Users user) {
 		// Session session = HibernateUtil.getSession();
 		Session session = sessionFactory.openSession();
 		session.save(user);
