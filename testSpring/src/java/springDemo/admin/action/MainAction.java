@@ -15,7 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import springDemo.admin.vo.Mails;
+import springDemo.admin.vo.UserBean;
+import springDemo.test.Base64ImageConverter;
+import springDemo.test.messenger.action.MessengerAction;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -31,7 +37,8 @@ public class MainAction extends ActionSupport implements ServletRequestAware, Se
 	String[] imageFileName;
 	String[] imageContentType;
 	String[] imageDescription;
-	
+	String users;
+
 	String inputString;
 	Integer inputInteger;
 
@@ -209,30 +216,71 @@ public class MainAction extends ActionSupport implements ServletRequestAware, Se
 		}
 		return SUCCESS;
 	}
-	
-	public String testAngularJS(){
+
+	public String testAngularJS() {
 		return SUCCESS;
 	}
-	
-	public String customTagLib(){
+
+	public String customTagLib() {
 		return SUCCESS;
 	}
-	
-	public String decryptString(){
+
+	public String decryptString() {
 		System.out.println(inputString);
 		System.out.println(inputInteger);
 		return SUCCESS;
 	}
-	
-	public String viewGoogleMaps(){
+
+	public String viewGoogleMaps() {
+		return SUCCESS;
+	}
+
+	public String viewChart() {
+		return SUCCESS;
+	}
+
+	public String dencode() {
+		return SUCCESS;
+	}
+
+	public String htmlDragger() {
 		return SUCCESS;
 	}
 	
-	public String viewChart(){
+	public String base64ToImage() {
 		return SUCCESS;
 	}
 	
-	public String dencode(){
+	public String createImageFromBase64() {
+		String base64Data = request.getParameter("base64Data");
+		String fileName = request.getParameter("fileName");
+		new Base64ImageConverter().convertBase64ToImage(base64Data, fileName);
+		return SUCCESS;
+	}
+	
+	public void getBase64FromImage() throws IOException {
+		String fileName = request.getParameter("fileName");
+		String base64Data = "data:image/png;base64," + new Base64ImageConverter().convertImageToBase64(fileName);
+		this.response.setContentType("text/plain;charset=UTF-8");
+		// this.response.setCharacterEncoding("UTF-8");
+		this.response.getWriter().write(base64Data);
+	}
+	
+	public String wsClient() {
+		return SUCCESS;
+	}
+
+	public String postJSONArray() {
+		if (users != null) {
+			UserBean user = new UserBean();
+			List<UserBean> userList = new ArrayList<UserBean>();
+			JSONArray array = new JSONArray(users);
+			for (Object obj : array) {
+				user = MessengerAction.mapJsonToClass(UserBean.class, obj.toString());
+				userList.add(user);
+				System.out.println(user.getUserName());
+			}
+		}
 		return SUCCESS;
 	}
 
@@ -341,6 +389,14 @@ public class MainAction extends ActionSupport implements ServletRequestAware, Se
 
 	public void setInputInteger(Integer inputInteger) {
 		this.inputInteger = inputInteger;
+	}
+
+	public String getUsers() {
+		return users;
+	}
+
+	public void setUsers(String users) {
+		this.users = users;
 	}
 
 }

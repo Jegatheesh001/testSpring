@@ -26,7 +26,7 @@ table.sideMenuLayout tr td.body {
 	vertical-align: top;
 }
 </STYLE>
-<script src="resources/jsp/chat/GlobalChart.js"></script>
+<script src="resources/jsp/chat/GlobalChat.js"></script>
 <script type="text/javascript">
 	var chatTab = '<s:property value="#session.chatTab"/>';
 	$(function() {
@@ -52,7 +52,10 @@ table.sideMenuLayout tr td.body {
 					</s:if>
 					<s:else>
 						<tr>
-							<td id="gc" onclick="globalChat();">Global Chart</td>
+							<td id="gc" onclick="globalChat();">Global Chat</td>
+						</tr>
+						<tr>
+							<td id="cr" onclick="chatRooms();"> Chat Rooms</td>
 						</tr>
 						<tr>
 							<td id="i" onclick="openinbox()">Inbox</td>

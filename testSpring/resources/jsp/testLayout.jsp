@@ -5,11 +5,11 @@
 
 
 <html>
-
 <head>
+
 <link href="resources/style/mystyle.css" rel="stylesheet"
 	type="text/css" />
-
+<link rel="icon" href="resources/images/favicon.ico" type="image/x-icon">
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
 <style type="text/css">

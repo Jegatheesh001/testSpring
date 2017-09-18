@@ -31,8 +31,8 @@ a.heading:HOVER {
 			<s:property value="chat.createdBy.userName" />
 			'
 			<s:hidden id="chatId" name="chat.chatId" />
-			<input id="chatMessage" onkeyup='saveForumChat(event);' type="text"
-				value="" /> <input id="send" type="button"
+			<br /> <input id="chatMessage" onkeyup='saveForumChat(event);'
+				type="text" value="" /> <input id="send" type="button"
 				onclick='saveForumChat();' value='Post' />&nbsp;&nbsp;&nbsp;&nbsp;<span
 				id="loadMore" style="color: brown;"></span>
 		</div>

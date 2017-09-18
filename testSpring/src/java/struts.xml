@@ -12,4 +12,5 @@
 	<include file="springDemo/eclinic-config.xml"></include>
 	<include file="springDemo/chat-config.xml"></include>
 	<include file="springDemo/test/messenger/messenger-config.xml"></include>
+	<constant name="struts.action.excludePattern" value="/ws/*" />
 </struts>

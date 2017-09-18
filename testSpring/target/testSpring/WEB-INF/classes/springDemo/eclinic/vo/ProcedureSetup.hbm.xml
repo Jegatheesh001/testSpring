@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="springDemo.eclinic.vo.ProcedureSetup" table="procedure_setup"
+		lazy="false">
+
+		<id name="procedureId" column="procedure_id" type="integer"
+			unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<property name="procedureName" column="procedure_name" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="procedurePrice" column="procedure_price" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="departmentId" column="department_id" type="integer"
+			length="100" lazy="false" not-null="false" />
+		<property name="procedureType" column="procedure_type" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="procedureCode" column="procedure_code" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="type" column="type" type="integer" length="100"
+			lazy="false" not-null="false" />
+		<property name="icdCode" column="icd_code" type="string" length="100"
+			lazy="false" not-null="false" />
+		<property name="categoryId" column="category_id" type="integer"
+			length="100" lazy="false" not-null="false" />
+		<property name="officeId" column="office_id" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="costPrice" column="cost_price" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="activeStatus" column="active_status" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="costPriceType" column="costPrice_type" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="arabicName" column="arabic_name" type="string"
+			length="100" lazy="false" not-null="false" />
+
+	</class>
+</hibernate-mapping>

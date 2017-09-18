@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<import resource="springDemo/springBeans/DataSource.xml" />
+	<import resource="springDemo/springBeans/Spring-Beans.xml" />
+	<bean id="springAction" class="springDemo.admin.action.SpringAction">
+	</bean>
+	<bean id="eclinicAction" class="springDemo.eclinic.action.EclinicAction">
+	</bean>
+</beans>

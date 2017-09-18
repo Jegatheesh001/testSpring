@@ -21,7 +21,7 @@ public class CustomI18nInterceptor extends I18nInterceptor {
 	 */
 
 	private static final String localeKey = "lang";
-	private static final String defaultLang = "ar";
+	private static final String defaultLang = "en";
 
 	public String intercept(ActionInvocation invocation) throws Exception {
 		Map<String, Parameter> params = ActionContext.getContext().getParameters();
@@ -39,7 +39,7 @@ public class CustomI18nInterceptor extends I18nInterceptor {
 		return invocation.invoke();
 	}
 
-	public String getLocaleKey() {
+	public static String getLocaleKey() {
 		return localeKey;
 	}
 }

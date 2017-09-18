@@ -18,24 +18,26 @@ public class SecurityFilter implements ContainerRequestFilter {
 
 	private static final String AUTHORIZATION_HEADER = "Authorization";
 	private static final String AUTHORIZATION_HEADER_PREFIX = "Basic ";
+	private static final String SECURED_URI_PREFIX = "secured";
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
-		List<String> authHeader = requestContext.getHeaders().get(AUTHORIZATION_HEADER);
-		if (authHeader != null && authHeader.size() > 0) {
-			String authToken = authHeader.get(0);
-			authToken = authToken.replaceFirst(AUTHORIZATION_HEADER_PREFIX, "");
-			String decodedString = Base64.decodeAsString(authToken);
-			StringTokenizer tokenizer = new StringTokenizer(decodedString, ":");
-			String userName = tokenizer.nextToken();
-			String password = tokenizer.nextToken();
-			if (userName.equals("user") && password.equals("password")) {
-				return;
+		if (requestContext.getUriInfo().getPath().contains(SECURED_URI_PREFIX)) {
+			List<String> authHeader = requestContext.getHeaders().get(AUTHORIZATION_HEADER);
+			if (authHeader != null && authHeader.size() > 0) {
+				String authToken = authHeader.get(0);
+				authToken = authToken.replaceFirst(AUTHORIZATION_HEADER_PREFIX, "");
+				String decodedString = Base64.decodeAsString(authToken);
+				StringTokenizer tokenizer = new StringTokenizer(decodedString, ":");
+				String userName = tokenizer.nextToken();
+				String password = tokenizer.nextToken();
+				if (userName.equals("user") && password.equals("password")) {
+					return;
+				}
 			}
+			Response unauthorizedresponse = Response.status(Response.Status.UNAUTHORIZED)
+					.entity(new ErrorMessage("Authorization denied.", 401, "No Documents")).build();
+			requestContext.abortWith(unauthorizedresponse);
 		}
-		Response unauthorizedresponse = Response.status(Response.Status.UNAUTHORIZED)
-				.entity(new ErrorMessage("Authorization denied.", 401, "No Documents")).build();
-		requestContext.abortWith(unauthorizedresponse);
 	}
-
 }

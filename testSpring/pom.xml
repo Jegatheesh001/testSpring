@@ -21,6 +21,7 @@
 		<version.gson>2.8.0</version.gson>
 		<version.websocket>1.1</version.websocket>
 		<version.hadoop>1.2.1</version.hadoop>
+		<version.jetty>9.4.6.v20170531</version.jetty>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -271,6 +272,20 @@
 			<artifactId>cdi-api</artifactId>
 			<version>1.2</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${version.jetty}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-server -->
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-server</artifactId>
+			<version>${version.jetty}</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>

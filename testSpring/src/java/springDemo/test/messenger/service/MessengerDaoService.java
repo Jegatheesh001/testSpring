@@ -40,7 +40,7 @@ public class MessengerDaoService {
 	public Message getMessage(Long messageId) {
 		Message message = messages.get(messageId);
 		if (message == null) {
-			throw new DataNotFoundException("Mesage Id:" + messageId + " is not found.");
+			throw new DataNotFoundException("Message Id:" + messageId + " is not found.");
 		}
 		return message;
 	}

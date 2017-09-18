@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="springDemo.admin.vo.Users" table="users" lazy="false">
+
+		<id name="userId" column="user_Id" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<property name="userName" column="user_Name" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="userCode" column="user_Code" type="string"
+			unique="true" length="100" lazy="false" not-null="true" />
+		<property name="password" column="password" type="string"
+			length="100" lazy="false" not-null="false" />
+
+	</class>
+</hibernate-mapping>

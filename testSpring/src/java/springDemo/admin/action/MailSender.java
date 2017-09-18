@@ -37,6 +37,8 @@ public class MailSender {
 			emailpass = "9659542527";
 			// email = "info@theimcentre.com";
 			// emailpass = "dohaqatar";
+			// email = "islam.aburub@alsaqergroup.com";
+			// emailpass = "Enigma1@";
 
 			// -------------------------//
 
@@ -167,6 +169,10 @@ public class MailSender {
 				props.put("mail." + protocol + ".ssl.trust","mail.theimcentre.com");
 				props.put("mail." + protocol + ".host", "mail.theimcentre.com");
 			}
+			if (mailProvider.equals("alsaqergroup")) {
+				props.put("mail." + protocol + ".ssl.trust","webmail.uasg.ho");
+				props.put("mail." + protocol + ".host", "webmail.uasg.ho");
+			}
 		}
 		return props;
 	}
@@ -175,6 +181,14 @@ public class MailSender {
 		public PasswordAuthentication getPasswordAuthentication() {
 			return new PasswordAuthentication(emailSetup.getMailId(), emailSetup.getPassword());
 		}
+	}
+	
+	public static void main(String[] args) {
+		Mails mail = new Mails();
+		mail.setMailto("jegatheesh93@gmail.com");
+		mail.setSubject("Test");
+		mail.setDetails("Testing..");
+		new MailSender().sendmail(mail);
 	}
 
 }

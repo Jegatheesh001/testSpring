@@ -1,7 +1,16 @@
+<%@page import="springDemo.interceptors.SessionCheckInterceptor"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%
+	if (session.getAttribute(SessionCheckInterceptor.getUserKey()) != null) {
+		response.setStatus(response.SC_MOVED_TEMPORARILY);
+		response.setHeader("Location", "welcomepage.action");
+	}
+%>
 <html>
 <head>
+<title>My World!!!</title>
+<link rel="icon" href="resources/images/favicon.ico" type="image/x-icon">
 <script type="text/javascript" src="resources/js/jquery-3.1.1.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript">

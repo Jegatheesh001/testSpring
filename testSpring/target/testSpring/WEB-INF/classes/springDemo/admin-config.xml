@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="login" extends="struts-default,interceptPack">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<action name="showLoginPage" method="showLoginPage"
+			class="springDemo.admin.action.LoginAction">
+			<interceptor-ref name="i18nCustom" />
+			<result name="success">index.jsp</result>
+			<result name="index">/index.jsp</result>
+		</action>
+
+		<action name="loginAction" method="loginAction"
+			class="springDemo.admin.action.LoginAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">welcomepage</param>
+			</result>
+			<result name="index">/index.jsp</result>
+		</action>
+
+		<action name="logout" method="logout"
+			class="springDemo.admin.action.LoginAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showLoginPage</param>
+			</result>
+			<result name="index">/index.jsp</result>
+		</action>
+
+		<action name="readFiles" method="readFiles"
+			class="springDemo.admin.action.MainAction">
+			<result name="success" type="tiles">/regexPage</result>
+		</action>
+
+		<action name="viewServlet" method="viewServlet"
+			class="springDemo.admin.action.MainAction">
+			<result name="success" type="tiles">/viewServlet</result>
+		</action>
+
+		<action name="uploadMultipleFiles" method="uploadMultipleFiles"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/UploadMultipleFiles.jsp</result>
+		</action>
+
+		<action name="multipleFileUpload" method="multipleFileUpload"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/UploadMultipleFiles.jsp</result>
+		</action>
+		
+		<action name="viewMail" method="viewMail"
+			class="springDemo.admin.action.MainAction">
+			<result name="success" type="tiles">/viewMail</result>
+		</action>
+
+		<action name="sendMail" method="sendMail"
+			class="springDemo.admin.action.MainAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">viewMail</param>
+				<!-- <param name="mails.mailId">${mails.mailId}</param> -->
+				<!-- <param name="mails.password">${mails.password}</param> -->
+			</result>
+		</action>
+				
+		<action name="translateBase" method="translateBase"
+			class="springDemo.test.rosette.action.TranslatorMainAction">
+		</action>
+						
+		<action name="viewGoogleMaps" method="viewGoogleMaps"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/GoogleMaps.jsp</result>
+		</action>
+		
+		<action name="viewHighChart" method="viewChart"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/HighChartBase.jsp</result>
+		</action>
+		
+		<action name="viewGoogleChart" method="viewChart"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/GoogleChartBase.jsp</result>
+		</action>
+		
+		<action name="dencode" method="dencode"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/EncodeDecode.jsp</result>
+		</action>
+		
+		<action name="htmlDragger" method="htmlDragger"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/HTMLDragger.jsp</result>
+		</action>
+		
+		<action name="postJSONArray" method="postJSONArray"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/HTMLDragger.jsp</result>
+		</action>
+		
+		<action name="wsClient" method="wsClient"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/websocket/WSClient.jsp</result>
+		</action>
+		
+	</package>
+
+	<package name="admin" extends="sessionCheck">
+
+		<!-- Start here -->
+
+		<action name="welcomepage" method="mainPage"
+			class="springDemo.admin.action.MainAction">
+			<result name="success" type="tiles">/welcomepage</result>
+		</action>
+
+		<action name="openMail" method="openMail"
+			class="springDemo.admin.action.MainAction">
+			<result name="success" type="tiles">/openMail</result>
+			<result name="view" type="redirectAction">
+				<param name="actionName">viewMail</param>
+				<param name="mails.mailId">${mails.mailId}</param>
+				<param name="mails.password">${mails.password}</param>
+			</result>
+			<result name="fail" type="redirectAction">
+				<param name="actionName">openMail</param>
+			</result>
+		</action>
+
+		<action name="regexPage" method="regexPage"
+			class="springDemo.admin.action.MainAction">
+			<result name="success" type="tiles">/regexPage</result>
+		</action>
+		
+		<action name="testAngularJS" method="testAngularJS"
+			class="springDemo.admin.action.MainAction">
+			<result name="success" type="tiles">/testAngularJS</result>
+		</action>
+		
+		<action name="customTagLib" method="customTagLib"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/CustomTagLib.jsp</result>
+		</action>
+				
+		<action name="decryptString" method="decryptString"
+			class="springDemo.admin.action.MainAction">
+			<interceptor-ref name="session" />
+			<interceptor-ref name="decrypt">
+				<param name="excludeParams">inputInteger</param>
+			</interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success">/resources/jsp/CustomTagLib.jsp</result>
+		</action>
+		
+		<action name="base64ToImage" method="base64ToImage"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/Base64ToImage.jsp</result>
+		</action>
+		
+		<action name="createImageFromBase64" method="createImageFromBase64"
+			class="springDemo.admin.action.MainAction">
+		</action>
+		
+		<action name="getBase64FromImage" method="getBase64FromImage"
+			class="springDemo.admin.action.MainAction">
+		</action>
+		
+		<!-- End here -->
+
+	</package>
+
+
+</struts>

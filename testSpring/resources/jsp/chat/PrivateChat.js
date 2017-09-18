@@ -98,7 +98,7 @@ function getLatestInboxChat() {
 	latestId = $("#maxId").val();
 	inboxUserId = $('#inboxUserId').val();
 	new_request = false;
-	alert(inboxUserId + " " + latestId);
+	//alert(inboxUserId + " " + latestId);
 	if (latestId) {
 		$.ajax({
 			url : "getInboxChat.action?inboxUserId=" + inboxUserId

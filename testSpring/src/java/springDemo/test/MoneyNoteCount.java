@@ -14,20 +14,17 @@ public class MoneyNoteCount {
 	public static void main(String[] args) {
 		new MoneyNoteCount().getAllCounts(2789);
 		new MoneyNoteCount().getAllCounts(5500);
+		new MoneyNoteCount().getAllCounts(900);
 		new MoneyNoteCount().getAllCounts(58);
 		new MoneyNoteCount().getAllCounts(5517);
 	}
 
+	final int[] values = { 1000, 500, 200, 100, 50, 20, 10, 5, 1 };
 	void getMoneyTypes() {
 		moneType = new ArrayList<Integer>();
-		moneType.add(1000);
-		moneType.add(500);
-		moneType.add(100);
-		moneType.add(50);
-		moneType.add(20);
-		moneType.add(10);
-		moneType.add(5);
-		moneType.add(1);
+		for (int i = 0; i < values.length; i++) {
+			moneType.add(values[i]);
+		}
 		Collections.sort(moneType, Collections.reverseOrder());
 	}
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="springDemo.eclinic.vo.LabtestInsurar" table="labtest_insurar"
+		lazy="false">
+		<id name="labtestInsurarId" column="id" type="int" unsaved-value="0">
+			<generator class="identity"></generator>
+		</id>
+		<property name="insurarId" type="int" lazy="false" column="insurar_id" />
+		<property name="testId" type="int" lazy="false" column="test_id" />
+		<property name="insurarAmount" type="string" lazy="false"
+			column="insurar_amount" />
+		<property name="deductableStat" type="string" lazy="false"
+			column="deductable_stat" />
+		<property name="deductableAmt" type="string" lazy="false"
+			column="deductable_amt" />
+		<property name="copayStat" type="string" lazy="false" column="copay_stat" />
+		<property name="copayAmt" type="string" lazy="false" column="copay_amt" />
+		<property name="preappStat" type="string" lazy="false"
+			column="preapp_stat" />
+		<property name="corpDisc" type="string" lazy="false" column="corp_disc" />
+		<property name="prediscAmt" type="string" lazy="false"
+			column="predisc_amt" />
+		<property name="updated" type="string" lazy="false" column="updated" />
+		<property name="tcode" type="string" lazy="false" column="tcode" />
+		<property name="insurarTestnm" type="string" lazy="false"
+			column="insurar_testnm" />
+		<property name="insurarIcdCode" type="string" lazy="false"
+			column="insurar_icd_code" />
+		<property name="insurarInternalCode" type="string" lazy="false"
+			column="insurar_internal_code" />
+		<property name="officeId" type="string" lazy="false" column="office_id" />
+		<property name="factor" type="string" lazy="false" column="factor" />
+	</class>
+</hibernate-mapping>

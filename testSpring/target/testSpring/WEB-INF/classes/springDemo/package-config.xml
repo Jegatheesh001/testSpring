@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="interceptPack" extends="struts-default">
+		<interceptors>
+			<interceptor name="session"
+				class="springDemo.interceptors.SessionCheckInterceptor" />
+			<interceptor name="request"
+				class="springDemo.interceptors.FindRequestTypeInterceptor" />
+			<interceptor name="decrypt"
+				class="springDemo.interceptors.ParamDecryptInterceptor" />
+			<interceptor name="i18nCustom"
+				class="springDemo.interceptors.CustomI18nInterceptor" />
+			<interceptor-stack name="newStack">
+				<interceptor-ref name="session" />
+				<interceptor-ref name="i18nCustom" />
+				<interceptor-ref name="params" />
+				<interceptor-ref name="defaultStack">
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+			</interceptor-stack>
+			<interceptor-stack name="allowPost">
+				<interceptor-ref name="session" />
+				<interceptor-ref name="request">
+					<param name="customType">POST</param>
+				</interceptor-ref>
+				<interceptor-ref name="params" />
+				<interceptor-ref name="defaultStack">
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+			</interceptor-stack>
+			<interceptor-stack name="decryptParams">
+				<interceptor-ref name="session" />
+				<interceptor-ref name="decrypt" />
+				<interceptor-ref name="params" />
+				<interceptor-ref name="defaultStack">
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+	</package>
+
+	<package name="sessionCheck" extends="interceptPack">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<default-interceptor-ref name="newStack"></default-interceptor-ref>
+		<global-results>
+			<result name="invalidsession" type="tiles">sessionout</result>
+			<result name="error">/error.jsp</result>
+			<result name="Exception">/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="error" />
+		</global-exception-mappings>
+	</package>
+
+</struts>

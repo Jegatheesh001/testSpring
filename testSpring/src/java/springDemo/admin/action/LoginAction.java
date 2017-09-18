@@ -21,6 +21,7 @@ import springDemo.admin.persistence.AdminHibernateDao;
 import springDemo.admin.vo.UserBean;
 import springDemo.interceptors.AESAlgorithm;
 import springDemo.interceptors.CustomI18nInterceptor;
+import springDemo.interceptors.SessionCheckInterceptor;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -52,10 +53,13 @@ public class LoginAction extends ActionSupport implements ServletRequestAware, S
 
 	public String loginAction() {
 		Map session = ActionContext.getContext().getSession();
-		userbean = authenticateUser("dir", "pass");
+		userbean = authenticateUser("admin", "pass");
 		setCookies();
 		userbean = new UserBean();
-		session.put("userbean", userbean);
+		userbean.setUserid(1);
+		userbean.setUserName("Admin");
+		session.put(SessionCheckInterceptor.getUserKey(), userbean);
+		new NotificationHandlerAction().pushNotification("User Entered", userbean.getUserName()+" Entered");
 		return "success";
 	}
 
@@ -84,8 +88,8 @@ public class LoginAction extends ActionSupport implements ServletRequestAware, S
 
 	public String logout() {
 		Map session = ActionContext.getContext().getSession();
-		session.remove("userbean");
-		session.remove(new CustomI18nInterceptor().getLocaleKey());
+		session.remove(SessionCheckInterceptor.getUserKey());
+		session.remove(CustomI18nInterceptor.getLocaleKey());
 		// session.clear();
 		return "success";
 	}

@@ -17,6 +17,7 @@
 				class="springDemo.interceptors.CustomI18nInterceptor" />
 			<interceptor-stack name="newStack">
 				<interceptor-ref name="session" />
+				<interceptor-ref name="i18nCustom" />
 				<interceptor-ref name="params" />
 				<interceptor-ref name="defaultStack">
 					<param name="exception.logEnabled">true</param>

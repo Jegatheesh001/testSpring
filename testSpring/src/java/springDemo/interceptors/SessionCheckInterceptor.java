@@ -33,4 +33,8 @@ public class SessionCheckInterceptor extends AbstractInterceptor {
 		}
 	}
 
+	public static String getUserKey() {
+		return USER_KEY;
+	}
+
 }

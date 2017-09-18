@@ -92,7 +92,22 @@
 			class="springDemo.admin.action.MainAction">
 			<result name="success">/resources/jsp/EncodeDecode.jsp</result>
 		</action>
-
+		
+		<action name="htmlDragger" method="htmlDragger"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/HTMLDragger.jsp</result>
+		</action>
+		
+		<action name="postJSONArray" method="postJSONArray"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/HTMLDragger.jsp</result>
+		</action>
+		
+		<action name="wsClient" method="wsClient"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/websocket/WSClient.jsp</result>
+		</action>
+		
 	</package>
 
 	<package name="admin" extends="sessionCheck">
@@ -141,7 +156,20 @@
 			<interceptor-ref name="params" />
 			<result name="success">/resources/jsp/CustomTagLib.jsp</result>
 		</action>
-
+		
+		<action name="base64ToImage" method="base64ToImage"
+			class="springDemo.admin.action.MainAction">
+			<result name="success">/resources/jsp/Base64ToImage.jsp</result>
+		</action>
+		
+		<action name="createImageFromBase64" method="createImageFromBase64"
+			class="springDemo.admin.action.MainAction">
+		</action>
+		
+		<action name="getBase64FromImage" method="getBase64FromImage"
+			class="springDemo.admin.action.MainAction">
+		</action>
+		
 		<!-- End here -->
 
 	</package>

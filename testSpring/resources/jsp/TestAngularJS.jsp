@@ -57,6 +57,10 @@
 			Quantity: <input type="number" step="1" data-ng-model="quantity"/> Costs: <input
 				type="number" step="0.01" data-ng-model="price"/> Total: {{ quantity * price }}
 		</p>
+		<p>-------------------------------------</p>
+		<!--directive:date-picker-->
+		<input type="text" placeholder="Date Picker" class="date-picker"/>
+		<p>-------------------------------------</p>
 	</div>
 </body>
 </html>

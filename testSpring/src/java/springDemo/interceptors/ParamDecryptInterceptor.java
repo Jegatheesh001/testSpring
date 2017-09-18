@@ -45,7 +45,7 @@ public class ParamDecryptInterceptor extends AbstractInterceptor {
 					obj = new org.apache.struts2.dispatcher.Parameter.Request(header, decrypted);
 					entry.setValue(obj);
 				} else {
-					throw (new Exception("Unable to Parse"));
+					throw (new Exception("Unable to Parse '" + header + "'. Encrypt the value properly."));
 				}
 			}
 		}

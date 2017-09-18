@@ -10,6 +10,8 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 
@@ -47,11 +49,12 @@ public class SpringAction extends ActionSupport implements ServletRequestAware, 
 	Users user;
 	List<Users> userList;
 
+	@SuppressWarnings("resource")
 	public String execute() {
-		// ApplicationContext beans1 = new ClassPathXmlApplicationContext(
-		// "/WEB-INF/Spring-Beans.xml");
-		@SuppressWarnings("deprecation")
-		BeanFactory beans = new XmlBeanFactory(new FileSystemResource(HibernateUtil.BEAN_PATH + "Spring-Beans.xml"));
+		ApplicationContext beans = new ClassPathXmlApplicationContext(
+				HibernateUtil.BEAN_PATH + "applicationContext.xml");
+		// BeanFactory beans = new XmlBeanFactory(new
+		// FileSystemResource(HibernateUtil.BEAN_PATH + "Spring-Beans.xml"));
 		userBean = (UserBean) beans.getBean("helloWorld");
 		System.out.println(userBean.getUserName());
 		return "success";

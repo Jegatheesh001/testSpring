@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="springDemo.eclinic.vo.TestSetup" table="test_setup"
+		lazy="false">
+
+		<id name="testId" column="test_Id" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		
+		<property name="testName" column="test_Name" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="amount" column="amount" type="string" length="100"
+			lazy="false" not-null="false" />
+		<property name="categoryId" column="category_Id" type="integer"
+			length="100" lazy="false" not-null="false" />
+		<property name="type" column="type" type="string" length="100"
+			lazy="false" not-null="false" />
+		<property name="sampleId" column="sample_Id" type="integer"
+			length="100" lazy="false" not-null="false" />
+		<property name="profileType" column="profile_type" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="testDoing" column="test_doing" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="testCode" column="testcode" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="labType" column="lab_type" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="notes" column="notes" type="string" length="100"
+			lazy="false" not-null="false" />
+		<property name="testTemplate" column="test_template" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="incentive" column="incentive" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="icdCode" column="icd_code" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="incentiveIns" column="incentive_ins" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="testFormat" column="test_format" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="singleTest" column="single_test" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="officeId" column="office_id" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="activeStatus" column="active_status" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="costPrice" column="cost_price" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="costPriceType" column="costPrice_type" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="containerId" column="container_id" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="sampleDesc" column="sample_desc" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="storageId" column="storage_id" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="tat" column="tat" type="string" length="100"
+			lazy="false" not-null="false" />
+		<property name="automation" column="automation" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="dosCode" column="dos_code" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="testAbbr" column="test_abbr" type="string"
+			length="100" lazy="false" not-null="false" />
+		<property name="testNameAr" column="testName_ar" type="string"
+			length="100" lazy="false" not-null="false" />
+
+	</class>
+</hibernate-mapping>
